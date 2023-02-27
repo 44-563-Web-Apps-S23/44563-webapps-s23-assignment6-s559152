@@ -2,6 +2,8 @@
 <html>
  <head>
     <title>Assignment 6 Painter HTML page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
  </head>
 <body>
 
@@ -13,7 +15,7 @@
 	<label for="gP">Guess the painter:</label>
 	<input type="text" id="gP"><br>
 
-	<button onclick="checkPainter()">Check the guess</button>
+	<button id= "check" onclick="checkPainter()">Check the guess</button>
     
 
 	<p id="result">Good: 0 Oops: 0</p>
@@ -21,17 +23,29 @@
     <script type="text/javascript">
         let good = 0;
         let oops = 0;
+        let remainingguess=10;
     
-        function checkPainter() {
+        function checkPainter() 
+        {
             hiddenPainter = document.getElementById("hP").value;
             guessPainter = document.getElementById("gP").value;
             confirmed = confirm("Are these values matched "+hiddenPainter+" and "+guessPainter)
     
-            if (confirmed) {
+            if (confirmed) 
+            {
                 good++;
                 alert("You got it right!");
-            } else {
+            } else 
+            {
                 oops++;
+                remainingguess--;
+                if(remainingguess===0)
+                {
+                    document.getElementById("check").onclick=function()
+                    {
+                        alert("Sorry, ran out of guesses.");
+                    }
+                }
                 alert("Sorry");
             }
     
