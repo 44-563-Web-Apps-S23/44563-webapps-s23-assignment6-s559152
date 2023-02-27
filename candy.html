@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Select a Candy Box</title>
+      </head>
+<body>
+
+<h2>Yaramala Shilpa hooses candy</h2>
+
+<form>
+   <label for="dc">
+    <input type="checkbox" value="True" id="dc">Dark Chocolate
+   </label>
+   <br>
+
+   <label for="nut">
+    <input type="checkbox" value="True" id="nut">Nuts
+   </label>
+   <br>
+
+   <label for="che">
+    <input type="checkbox" value="false" id="che">Chewy
+   </label>
+   <br>
+
+</form>
+<button onclick="selectBox()">Select a box</button>
+<p id="result"></p>
+<form>
+    <label for="si">
+        <input type="text" value="size" id="si">Enter the size
+    </label>
+   <br>
+
+   <label for="pr">
+    <input type="text" id="pr">Enter price
+  </label><br>
+   
+</form>
+<button onclick="updateBox()">Update the box</button>
+
+<script type="text/javascript"> 
+   let my_candy_box={};
+   function selectBox(){
+    my_candy_box = {};
+    my_candy_box.dark=document.getElementById("dc").checked;
+    my_candy_box.nuts=document.getElementById("nut").checked;
+    my_candy_box.chewy=document.getElementById("che").checked;
+    document.getElementById("result").innerHTML=JSON.stringify(my_candy_box);
+   }
+   function updateBox(){
+        let size=document.getElementById("si").value;
+        let price=document.getElementById("pr").value;
+        my_candy_box[size]=price;
+        document.getElementById("result").innerHTML=JSON.stringify(my_candy_box);
+    }
+</script>
+
+
+</body>
+</html> 
