@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Conversions Page</title>
+    </head>
+ 
+<body>
+
+<h2>Yaramala Shilpa shows currency conversions</h2>
+
+<form>
+    <label for="base">Enter base amount</label>
+    <input type ="number" id="base" value=50> <br>
+
+    <label for="conversion">Enter the conversion rate</label>
+    <input type ="number" id="conversion" value="35"> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result"> </p>
+
+<script type="text/javascript"> 
+
+function convert(){
+    const b=document.getElementById("base").value;
+    const c=document.getElementById("conversion").value;
+    let toShow="";
+    for(let i=1;i<=5;i++){
+        const value= b * Math.pow(2,i-1);
+        const conValue= value*c;
+        toShow += value + " is " + conValue + "; ";
+
+    }
+    document.getElementById("result").innerHTML= "Conversions are: "+ toShow;
+}
+</script>
+<form>
+    <label for="mean">Average</label>
+    <input type="radio" onclick="chooseOp()"><br>
+
+    <label for="max">Maximum</label>
+    <input type="radio" id="max" onclick="chooseOp()"><br>
+
+    <label for="min">Minimum</label>
+    <input type="radio" id="min" onclick="chooseOp()"><br>
+</form>
+<label for="base">Enter base amount:</label>
+	<input type="number" id="base" value="5">
+	<br>
+	<label for="conversion">Enter the conversion rate:</label>
+	<input type="number" id="conversion" value="3.3">
+	<br>
+<p id="result"></p>
+<script type="text/javascript">
+    function chooseOp()
+    {
+        const b=document.getElementById("base").value;
+        const c=document.getElementById("conversion").value;
+        const r=document.getElementById("result").value;
+        let v,t;
+        if(document.getElementById("mean").checked){
+            v=(parseFloat(b)+parseFloat(c))/2;
+            t="Mean of " + b + " and " + c + " is " + v; 
+        }
+        else if(document.getElementById("max").checked){
+            v= Math.max(parseFloat(b)+parseFloat(c));
+            t= "Max of " + b + " and " + c + " is " + v;
+        }
+        else{
+            v= Math.min(parseFloat(b)+parseFloat(c));
+            t= "Min of " + b + " and " + c + " is " + v;
+        }
+        r.innerHTML=t;
+    }
+</script>
+
+</body>
+</html> 
