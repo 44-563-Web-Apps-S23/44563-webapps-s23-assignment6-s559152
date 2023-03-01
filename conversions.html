@@ -14,21 +14,22 @@
     <label for="conver">Enter the conversion rate</label>
     <input type="number" id="conver" value="35"><br>
 
-    <button type="button" onclick="convert()">Show conversions</button>
+    <button type="button" onclick="convert()">Show conversions</button><br>
 </form>
-<p id="res"></p>
+<p id="res"> </p>
+
 <form>
     <label>
         <input type="radio" name="operation" value="mean" onclick="chooseOp()">Average
-    </label>
+    </label><br>
     <label>
         <input type="radio" name="operation" value="maximum" onclick="chooseOp()">Max
-    </label>
+    </label><br>
     <label>
         <input type="radio" name="operation" value="minimum" onclick="chooseOp()">Min
-    </label>
+    </label><br>
 </form>
-<p id="result"></p>
+
 
 <script type="text/javaScript">
     function convert()
@@ -47,27 +48,27 @@
     function chooseOp(){
         const b= document.getElementById("base").value;
         const c=document.getElementById("conver").value;
-        let re=document.getElementById("res");
         let op=document.querySelector('input[name="operation"]:checked').value;
-        let r;
+        let r,re="";
         switch(op){
             case "maximum": 
                 r=Math.max(b,c);
-                re.innerHTML=`The maximum of ${b} and ${c} is ${r}`;
+                re=`The  maximum of ${b} and ${c} is ${r}`;
                 break;
             case "minimum":
                 r=Math.min(b,c);
-                re.innerHTML=`The minimum if ${b} and ${c} is ${r}`;
+                re=`The minimum of ${b} and ${c} is ${r}`;
                 break;
             case "mean":
                 r= (Number(b)+Number(c))/2;
-                re.innerHTML=`The avg if ${b} and ${c} is ${r}`;
+                re=`The Average of ${b} and ${c} is ${r}`;
                 break;
         } 
-        document.getElementByID("res").innerHTML=re;
+        document.getElementById("result").innerHTML=re;
     }
     
 </script>
+<p id="result"></p>
 
 </body>
 </html> 
