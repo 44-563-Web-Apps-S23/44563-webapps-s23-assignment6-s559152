@@ -36,11 +36,10 @@
     
             if (confirmed) 
             {
-                good++;
                 alert("You got it right!");
+                good++;
             } else 
             {
-                oops++;
                 remainingguess--;
                 if(remainingguess===0)
                 {
@@ -50,6 +49,7 @@
                     }
                 }
                 alert("Sorry");
+                oops++;
             }
     
             document.getElementById("result").innerHTML = `Good: ${good} Oops: ${oops}`;
